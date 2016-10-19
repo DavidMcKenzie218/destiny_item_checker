@@ -19757,6 +19757,7 @@
 	var React = __webpack_require__(1);
 	var TitleComponent = __webpack_require__(160);
 	var InfoComponent = __webpack_require__(161);
+	var IconContainer = __webpack_require__(162);
 	
 	var WeaponContainer = React.createClass({
 	  displayName: 'WeaponContainer',
@@ -19767,6 +19768,7 @@
 	      'div',
 	      null,
 	      React.createElement(TitleComponent, { title: 'Weapon Title' }),
+	      React.createElement(IconContainer, null),
 	      React.createElement(InfoComponent, { name: 'Name', weaponDescription: 'Description', quote: 'quote' })
 	    );
 	  }
@@ -19828,6 +19830,34 @@
 	};
 	
 	module.exports = InfoComponent;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var IconContainer = React.createClass({
+	  displayName: 'IconContainer',
+	
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'h3',
+	        null,
+	        'Icons go here'
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = IconContainer;
 
 /***/ }
 /******/ ]);
