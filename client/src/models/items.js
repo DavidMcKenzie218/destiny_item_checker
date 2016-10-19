@@ -34,5 +34,5 @@ var Items = function(){
     //http://www.bungie.net/common/destiny_content/icons/75eaaa84aac56eb12e8e2fc9f7833ccc.jpg
   });
 
-  return [item1, item2, item3, item4]
+  return [item1, item2, item3, item4];
 }
