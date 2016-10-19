@@ -6,7 +6,7 @@ var IconContainer = React.createClass({
   render: function(){
 
   var icons = this.props.data.map(function(weapon, index){
-    return(<IconComponent key={index} image={weapon.img}></IconComponent>);
+    return(<IconComponent key={index} image={weapon.img} onClick={this.}></IconComponent>);
   })
     return(
       <div>
