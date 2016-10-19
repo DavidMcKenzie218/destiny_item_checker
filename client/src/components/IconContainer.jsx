@@ -4,9 +4,13 @@ var IconComponent = require('./IconComponent.jsx')
 var IconContainer = React.createClass({
 
   render: function(){
+
+  var icons = this.props.data.map(function(weapon, index){
+    return(<IconComponent key={index} image={weapon.img}></IconComponent>);
+  })
     return(
       <div>
-        <IconComponent image="http://www.bungie.net//common/destiny_content/icons/d88139c9e99fd5ec8d3beb7cf44938f7.jpg"/>
+        {icons}
       </div>
       )
   }

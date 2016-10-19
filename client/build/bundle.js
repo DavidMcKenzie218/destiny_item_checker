@@ -19854,10 +19854,14 @@
 	
 	
 	  render: function render() {
+	
+	    var icons = this.props.data.map(function (weapon, index) {
+	      return React.createElement(IconComponent, { key: index, image: weapon.img });
+	    });
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(IconComponent, { image: 'http://www.bungie.net//common/destiny_content/icons/d88139c9e99fd5ec8d3beb7cf44938f7.jpg' })
+	      icons
 	    );
 	  }
 	
