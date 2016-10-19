@@ -19838,6 +19838,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var IconComponent = __webpack_require__(163);
 	
 	var IconContainer = React.createClass({
 	  displayName: 'IconContainer',
@@ -19847,17 +19848,31 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(
-	        'h3',
-	        null,
-	        'Icons go here'
-	      )
+	      React.createElement(IconComponent, { image: 'http://www.bungie.net//common/destiny_content/icons/d88139c9e99fd5ec8d3beb7cf44938f7.jpg' })
 	    );
 	  }
 	
 	});
 	
 	module.exports = IconContainer;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var Icon = function Icon(props) {
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement('img', { src: props.image })
+	  );
+	};
+	
+	module.exports = Icon;
 
 /***/ }
 /******/ ]);
