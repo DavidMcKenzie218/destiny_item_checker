@@ -48,13 +48,10 @@
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
+	var WeaponContainer = __webpack_require__(159);
 	
 	window.onload = function () {
-	  ReactDOM.render(React.createElement(
-	    'h3',
-	    null,
-	    'Destiny Weapons'
-	  ), document.getElementById('app'));
+	  ReactDOM.render(React.createElement(WeaponContainer, null), document.getElementById('app'));
 	};
 
 /***/ },
@@ -19750,6 +19747,34 @@
 	
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var WeaponContainer = React.createClass({
+	  displayName: 'WeaponContainer',
+	
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'h3',
+	        null,
+	        'Weapon Container'
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = WeaponContainer;
 
 /***/ }
 /******/ ]);
