@@ -19853,13 +19853,40 @@
 	  displayName: 'IconContainer',
 	
 	
-	  changeWeapon: function changeWeapon() {},
+	  makeButtons: function makeButtons() {
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
+	
+	    try {
+	      for (var _iterator = this.props.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        var weapon = _step.value;
+	
+	        console.log(weapon);
+	      }
+	    } catch (err) {
+	      _didIteratorError = true;
+	      _iteratorError = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion && _iterator.return) {
+	          _iterator.return();
+	        }
+	      } finally {
+	        if (_didIteratorError) {
+	          throw _iteratorError;
+	        }
+	      }
+	    }
+	  },
 	
 	  render: function render() {
 	
 	    var icons = this.props.data.map(function (weapon, index) {
-	      return React.createElement(IconComponent, { key: index, image: weapon.img, onClick: this.changeWeapon });
+	      return React.createElement(IconComponent, { id: weapon.name, key: index, image: weapon.img });
 	    });
+	    console.log(icons);
+	    this.makeButtons();
 	    return React.createElement(
 	      'div',
 	      null,

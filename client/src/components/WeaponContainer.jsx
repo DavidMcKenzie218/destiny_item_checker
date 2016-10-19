@@ -11,7 +11,6 @@ var WeaponContainer = React.createClass({
     return{data: testData, selectedWeapon: {name: "Select a weapon", data: {desctiption: "No item selected", quote: "No item selected"}}}
   },
 
-
   render: function(){
     return(
       <div>

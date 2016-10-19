@@ -3,15 +3,19 @@ var IconComponent = require('./IconComponent.jsx')
 
 var IconContainer = React.createClass({
 
-  changeWeapon: function(){
-
+  makeButtons: function(){
+    for(var weapon of this.props.data){
+     console.log(weapon);
+    }
   },
 
   render: function(){
 
   var icons = this.props.data.map(function(weapon, index){
-    return(<IconComponent key={index} image={weapon.img} onClick={this.changeWeapon}></IconComponent>);
+    return(<IconComponent id={weapon.name} key={index} image={weapon.img}></IconComponent>);
   })
+  console.log(icons)
+  this.makeButtons();
     return(
       <div>
         {icons}
