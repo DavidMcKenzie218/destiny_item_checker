@@ -19759,14 +19759,12 @@
 	var InfoComponent = __webpack_require__(161);
 	var IconContainer = __webpack_require__(162);
 	
-	// var testData = [{name: "Weapon 1", description: "Weapon 1 descriptions", quote: "Weapon 1 quote", img: "http://www.bungie.net//common/destiny_content/icons/d88139c9e99fd5ec8d3beb7cf44938f7.jpg"}, {name: "Weapon 2", description: "Weapon 2 descriptions", quote: "Weapon 2 quote", img: "https://www.bungie.net/common/destiny_content/icons/a0a61a73bc5d680844824b795c14e7c9.jpg"}]
-	
 	var WeaponContainer = React.createClass({
 	  displayName: 'WeaponContainer',
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { items: [], selectedItem: null };
+	    return { items: [], selectedWeapon: { name: "select a Weapon", description: "", quote: "" } };
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -19784,20 +19782,24 @@
 	    request.send();
 	  },
 	
-	  setFocusCountry: function setFocusCountry(index) {
-	    var newItem = this.state.items[index];
-	    this.setState({
-	      focusItem: newItem
-	    });
+	  // setFocusItem: function(index){
+	  //   var newItem = this.state.items[index];
+	  //   this.setState({
+	  //     focusItem: newItem
+	  //   });
+	
+	  weaponClicked: function weaponClicked(id) {
+	    var selectedWeapon = { name: id.name, description: id.description, quote: id.quote };
+	    this.setState({ selectedWeapon: selectedWeapon });
 	  },
 	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(TitleComponent, { title: this.state.selectedItem.name }),
-	      React.createElement(IconContainer, { data: this.state.item }),
-	      React.createElement(InfoComponent, { name: this.state.selectedItem.name, data: this.state.selectedItem })
+	      React.createElement(TitleComponent, { title: this.state.selectedWeapon.name }),
+	      React.createElement(IconContainer, { data: this.state.items, onClicked: this.weaponClicked }),
+	      React.createElement(InfoComponent, { name: this.state.selectedWeapon.name, data: this.state.selectedWeapon })
 	    );
 	  }
 	
@@ -19875,13 +19877,12 @@
 	  displayName: 'IconContainer',
 	
 	
-	  changeWeapon: function changeWeapon() {},
-	
 	  render: function render() {
 	
 	    var icons = this.props.data.map(function (weapon, index) {
-	      return React.createElement(IconComponent, { key: index, image: weapon.img /*onClick={this.changeWeapon}*/ });
-	    });
+	      return React.createElement(IconComponent, { id: weapon, key: index, image: weapon.image, onClicked: this.props.onClicked });
+	    }.bind(this));
+	
 	    return React.createElement(
 	      'div',
 	      null,
@@ -19902,7 +19903,10 @@
 	var React = __webpack_require__(1);
 	
 	var Icon = function Icon(props) {
-	  return React.createElement('img', { src: props.image });
+	  var handleClick = function handleClick() {
+	    props.onClicked(props.id);
+	  };
+	  return React.createElement('img', { src: props.image, onClick: handleClick });
 	};
 	
 	module.exports = Icon;
