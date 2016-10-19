@@ -11,11 +11,16 @@ var WeaponContainer = React.createClass({
     return{data: testData, selectedWeapon: {name: "Select a weapon", data: {desctiption: "No item selected", quote: "No item selected"}}}
   },
 
+  weaponClicked: function(id){
+    var selectedWeapon = {name: id.name, data: {description: id.description, quote: id.quote}}
+    this.setState({selectedWeapon: selectedWeapon})
+  },
+
   render: function(){
     return(
       <div>
         <TitleComponent title={this.state.selectedWeapon.name}/>
-        <IconContainer data={this.state.data}/>
+        <IconContainer data={this.state.data} onClicked={this.weaponClicked}/>
         <InfoComponent name={this.state.selectedWeapon.name} data={this.state.selectedWeapon.data}/>
       </div>
       )

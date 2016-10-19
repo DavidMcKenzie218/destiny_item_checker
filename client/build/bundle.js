@@ -19769,12 +19769,17 @@
 	    return { data: testData, selectedWeapon: { name: "Select a weapon", data: { desctiption: "No item selected", quote: "No item selected" } } };
 	  },
 	
+	  weaponClicked: function weaponClicked(id) {
+	    var selectedWeapon = { name: id.name, data: { description: id.description, quote: id.quote } };
+	    this.setState({ selectedWeapon: selectedWeapon });
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(TitleComponent, { title: this.state.selectedWeapon.name }),
-	      React.createElement(IconContainer, { data: this.state.data }),
+	      React.createElement(IconContainer, { data: this.state.data, onClicked: this.weaponClicked }),
 	      React.createElement(InfoComponent, { name: this.state.selectedWeapon.name, data: this.state.selectedWeapon.data })
 	    );
 	  }
@@ -19853,40 +19858,12 @@
 	  displayName: 'IconContainer',
 	
 	
-	  makeButtons: function makeButtons() {
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
-	
-	    try {
-	      for (var _iterator = this.props.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        var weapon = _step.value;
-	
-	        console.log(weapon);
-	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
-	      }
-	    }
-	  },
-	
 	  render: function render() {
 	
 	    var icons = this.props.data.map(function (weapon, index) {
-	      return React.createElement(IconComponent, { id: weapon.name, key: index, image: weapon.img });
-	    });
+	      return React.createElement(IconComponent, { id: weapon, key: index, image: weapon.img, onClicked: this.props.onClicked });
+	    }.bind(this));
 	    console.log(icons);
-	    this.makeButtons();
 	    return React.createElement(
 	      'div',
 	      null,
@@ -19907,10 +19884,13 @@
 	var React = __webpack_require__(1);
 	
 	var Icon = function Icon(props) {
+	  var handleClick = function handleClick() {
+	    props.onClicked(props.id);
+	  };
 	  return React.createElement(
 	    'div',
 	    null,
-	    React.createElement('img', { src: props.image })
+	    React.createElement('img', { src: props.image, onClick: handleClick })
 	  );
 	};
 	
