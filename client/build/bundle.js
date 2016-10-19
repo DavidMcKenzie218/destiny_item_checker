@@ -48,13 +48,10 @@
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
+	var WeaponContainer = __webpack_require__(159);
 	
 	window.onload = function () {
-	  ReactDOM.render(React.createElement(
-	    'h3',
-	    null,
-	    'Destiny Weapons'
-	  ), document.getElementById('app'));
+	  ReactDOM.render(React.createElement(WeaponContainer, null), document.getElementById('app'));
 	};
 
 /***/ },
@@ -19750,6 +19747,145 @@
 	
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var TitleComponent = __webpack_require__(160);
+	var InfoComponent = __webpack_require__(161);
+	var IconContainer = __webpack_require__(162);
+	
+	var testData = [{ name: "Weapon 1", description: "Weapon 1 descriptions", quote: "Weapon 1 quote", img: "http://www.bungie.net//common/destiny_content/icons/d88139c9e99fd5ec8d3beb7cf44938f7.jpg" }, { name: "Weapon 2", description: "Weapon 2 descriptions", quote: "Weapon 2 quote", img: "https://www.bungie.net/common/destiny_content/icons/a0a61a73bc5d680844824b795c14e7c9.jpg" }];
+	
+	var WeaponContainer = React.createClass({
+	  displayName: 'WeaponContainer',
+	
+	
+	  getInitialState: function getInitialState() {
+	    return { data: testData, selectedWeapon: { name: "Select a weapon", data: { desctiption: "No item selected", quote: "No item selected" } } };
+	  },
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(TitleComponent, { title: this.state.selectedWeapon.name }),
+	      React.createElement(IconContainer, { data: this.state.data }),
+	      React.createElement(InfoComponent, { name: this.state.selectedWeapon.name, data: this.state.selectedWeapon.data })
+	    );
+	  }
+	
+	});
+	
+	module.exports = WeaponContainer;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var TitleComponent = function TitleComponent(props) {
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement(
+	      'h3',
+	      null,
+	      props.title
+	    )
+	  );
+	};
+	
+	module.exports = TitleComponent;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var InfoComponent = function InfoComponent(props) {
+	
+	  var weaponData = props.data;
+	
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement(
+	      'h4',
+	      null,
+	      props.name
+	    ),
+	    React.createElement(
+	      'p',
+	      null,
+	      weaponData.description
+	    ),
+	    React.createElement(
+	      'p',
+	      null,
+	      weaponData.quote
+	    )
+	  );
+	};
+	
+	module.exports = InfoComponent;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var IconComponent = __webpack_require__(163);
+	
+	var IconContainer = React.createClass({
+	  displayName: 'IconContainer',
+	
+	
+	  render: function render() {
+	
+	    var icons = this.props.data.map(function (weapon, index) {
+	      return React.createElement(IconComponent, { key: index, image: weapon.img });
+	    });
+	    return React.createElement(
+	      'div',
+	      null,
+	      icons
+	    );
+	  }
+	
+	});
+	
+	module.exports = IconContainer;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var Icon = function Icon(props) {
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement('img', { src: props.image })
+	  );
+	};
+	
+	module.exports = Icon;
 
 /***/ }
 /******/ ]);
