@@ -18,5 +18,21 @@ var Items = function(){
     //http://www.bungie.net/common/destiny_content/icons/781b003ced00037c0c238f0a33dc30e0.jpg
   });
 
+  var item3 = new Item({
+    name: "Hawkmoon",
+    description: "Exotic Hand Cannon",
+    quote: "Stalk thy prey and let loose thy talons upon the Darkness.",
+    icon: "4375e2f5ddd225763ae439f7edc8e561"
+    //http://www.bungie.net/common/destiny_content/icons/4375e2f5ddd225763ae439f7edc8e561.jpg
+  });
+
+  var item4 = new Item({
+    name: "Palindrome",
+    description: "Legendary Hand Cannon",
+    quote: "Draw, O coward!",
+    icon: "75eaaa84aac56eb12e8e2fc9f7833ccc"
+    //http://www.bungie.net/common/destiny_content/icons/75eaaa84aac56eb12e8e2fc9f7833ccc.jpg
+  });
+
   return [item1, item2, item3, item4]
 }
