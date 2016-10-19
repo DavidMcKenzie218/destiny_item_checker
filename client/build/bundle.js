@@ -19755,6 +19755,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var TitleComponent = __webpack_require__(160);
 	
 	var WeaponContainer = React.createClass({
 	  displayName: 'WeaponContainer',
@@ -19764,17 +19765,35 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(
-	        'h3',
-	        null,
-	        'Weapon Container'
-	      )
+	      React.createElement(TitleComponent, { title: 'Weapon Title' })
 	    );
 	  }
 	
 	});
 	
 	module.exports = WeaponContainer;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var TitleComponent = function TitleComponent(props) {
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement(
+	      'h3',
+	      null,
+	      props.title
+	    )
+	  );
+	};
+	
+	module.exports = TitleComponent;
 
 /***/ }
 /******/ ]);
