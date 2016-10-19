@@ -8,16 +8,16 @@ var testData = [{name: "Weapon 1", description: "Weapon 1 descriptions", quote: 
 var WeaponContainer = React.createClass({
 
   getInitialState: function(){
-    return{data: testData, selectedWeapon: "Select a weapon"}
+    return{data: testData, selectedWeapon: {name: "Select a weapon", data: {desctiption: "No item selected", quote: "No item selected"}}}
   },
 
 
   render: function(){
     return(
       <div>
-        <TitleComponent title={this.state.selectedWeapon}/>
-        <IconContainer/>
-        <InfoComponent name="Name" weaponDescription="Description" quote="quote"/>
+        <TitleComponent title={this.state.selectedWeapon.name}/>
+        <IconContainer data={this.state.data}/>
+        <InfoComponent name={this.state.selectedWeapon.name} data={this.state.selectedWeapon.data}/>
       </div>
       )
   }

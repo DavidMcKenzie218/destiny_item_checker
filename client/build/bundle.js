@@ -19766,16 +19766,16 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { data: testData, selectedWeapon: "Select a weapon" };
+	    return { data: testData, selectedWeapon: { name: "Select a weapon", data: { desctiption: "No item selected", quote: "No item selected" } } };
 	  },
 	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(TitleComponent, { title: this.state.selectedWeapon }),
-	      React.createElement(IconContainer, null),
-	      React.createElement(InfoComponent, { name: 'Name', weaponDescription: 'Description', quote: 'quote' })
+	      React.createElement(TitleComponent, { title: this.state.selectedWeapon.name }),
+	      React.createElement(IconContainer, { data: this.state.data }),
+	      React.createElement(InfoComponent, { name: this.state.selectedWeapon.name, data: this.state.selectedWeapon.data })
 	    );
 	  }
 	
@@ -19814,6 +19814,9 @@
 	var React = __webpack_require__(1);
 	
 	var InfoComponent = function InfoComponent(props) {
+	
+	  var weaponData = props.data;
+	
 	  return React.createElement(
 	    'div',
 	    null,
@@ -19825,12 +19828,12 @@
 	    React.createElement(
 	      'p',
 	      null,
-	      props.weaponDescription
+	      weaponData.description
 	    ),
 	    React.createElement(
 	      'p',
 	      null,
-	      props.quote
+	      weaponData.quote
 	    )
 	  );
 	};
